@@ -16,7 +16,7 @@ def test_validate_events():
 
 def test_negative_passengers():
     sample = {"Timestamp": "08:11", 
-              "Route": "AITU", 
+              "Route": "AITU-Campus–Residence", 
               "Bus": "B02", 
               "Passengers": "-3", 
               "Speed_kmh": "30", 
