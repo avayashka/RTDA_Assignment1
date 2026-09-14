@@ -91,7 +91,18 @@ def validate_events(event):
     except (KeyError, TypeError, ValueError):
         formatted_timestamp = None
         errors.append("Invalid timestamp format")
-        
+
+    valid_routes = ["AITU-Campus–Residence", "AITU-Campus-Residence"]
+    if event.get("Route") not in valid_routes:
+        errors.append("Invalid route specified")
+
+    try:
+        timestamp = datetime.strptime(event["Timestamp"], "%H:%M")
+        formatted_timestamp = timestamp.strftime("%H:%M")
+    except (KeyError, TypeError, ValueError):
+        formatted_timestamp = None
+        errors.append("Invalid timestamp format")
+
     try:
         passengers = int(event.get("Passengers"))
         if passengers < 0:
